@@ -17,3 +17,14 @@ power_data <- read.table("./data/household_power_consumption.txt",
                          sep = ";", header=TRUE,
                          stringsAsFactors=FALSE, na.strings=c("?")
                        )
+
+# convert Date and Time columns in the data frame to a POSIX value
+power_data$DateTime <- paste(power_data$Date, power_data$Time)
+power_data$DateTime <- strptime(power_data$DateTime, format="%d/%m/%Y %H:%M:%S")
+
+# subset the power data to only 2007-02-01 and 2007-02-02
+ power_data <- power_data[power_data$DateTime > as.POSIXlt("2007-01-31") & power_data$DateTime < as.POSIXlt("2007-02-03"),]
+
+# create histogram
+hist(power_data$Global_active_power, col="Red", main="Global Active Power",
+     xlab="Global Active Power (kilowatts)")
