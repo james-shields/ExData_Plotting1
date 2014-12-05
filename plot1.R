@@ -23,8 +23,14 @@ power_data$DateTime <- paste(power_data$Date, power_data$Time)
 power_data$DateTime <- strptime(power_data$DateTime, format="%d/%m/%Y %H:%M:%S")
 
 # subset the power data to only 2007-02-01 and 2007-02-02
- power_data <- power_data[power_data$DateTime > as.POSIXlt("2007-01-31") & power_data$DateTime < as.POSIXlt("2007-02-03"),]
+ power_data <- power_data[power_data$DateTime >= as.POSIXlt("2007-02-01") & power_data$DateTime < as.POSIXlt("2007-02-03"),]
+
+# open a png graphics device
+png(filename="./plot1.png", width=480, height=480)
 
 # create histogram
 hist(power_data$Global_active_power, col="Red", main="Global Active Power",
      xlab="Global Active Power (kilowatts)")
+
+# close the png graphics device
+dev.off()
