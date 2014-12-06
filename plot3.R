@@ -4,7 +4,9 @@
 #          household power data set.
 
 
-# load source
+# The code for downloading the data and preparing it for analysis is stored
+# in the script get_data.R.
+# Load the source file and assign the data to the variable "data".
 source("./get_data.R")
 data <- get_data()
 
@@ -12,6 +14,8 @@ data <- get_data()
 png("./plot3.png")
 
 # plot data
+
+# line plots of the "Sub_metering" variables
 plot(x=data$DateTime, y=data$Sub_metering_1,type="n", yaxt="n", ylab="Energy Sub Metering", xlab="")
 axis(side=2, at=c(0, 10, 20, 30))
 
