@@ -21,7 +21,7 @@ plot(data$DateTime, data$Global_active_power, xlab="",
 plot(data$DateTime, data$Voltage, xlab="datetime",
      ylab="Voltage", type="l")
 
-# plot data
+# create multi-series line plot for Sub_metering values
 plot(x=data$DateTime, y=data$Sub_metering_1,type="n", yaxt="n", ylab="Energy Sub Metering", xlab="")
 axis(side=2, at=c(0, 10, 20, 30))
 
@@ -36,15 +36,6 @@ legend("topright", lty=c(1,1,1), col=c("Black", "Red", "Blue"),
 
 plot(x=data$DateTime, y=data$Global_reactive_power, xlab="datetime",
      ylab="Global Reactive Power", type="l")
-
-#plot(x=data$DateTime, y=data$Global_average_power, xlab="",
-#     ylab="Global Average Powltageer", type="l")
-#plot(x=data$DateTime, y=data$Global_average_power, xlab="",
-#     ylab="Global Average Powltageer", type="l")
-#plot(x=data$DateTime, y=data$Global_average_power, xlab="",
-#     ylab="Global Average Powltageer", type="l")
-
-
 
 #close the graphics device
 dev.off()
